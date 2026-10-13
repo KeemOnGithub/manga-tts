@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ef" />
+    <title>PageTurn Audio</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">P</span><span>PageTurn <em>Audio</em></span></a>
+      <span id="service-status" class="service-status"><i></i> Checking services</span>
+    </header>
+    <main class="shell">
+      <section id="home-view">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">YOUR STORIES, HEARD</p>
+            <h1>Turn a book into<br /><span>your next listen.</span></h1>
+            <p class="lede">Upload a PDF, shape the voices, and make an audiobook that feels like yours.</p>
+          </div>
+          <div class="upload-card">
+            <div class="upload-icon">↑</div>
+            <h2>Start with a PDF</h2>
+            <p>Text based PDFs up to 50 MB</p>
+            <label class="button primary upload-button" for="pdf-file">Choose a PDF</label>
+            <input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden />
+            <p id="upload-message" class="inline-message" aria-live="polite"></p>
+            <div class="privacy-note">PDFs and audio are stored on this server. Passage text is sent to Alibaba Cloud Model Studio for analysis and speech generation. Local, single user use only.</div>
+          </div>
+        </div>
+        <section class="library-section">
+          <div class="section-heading"><div><p class="eyebrow">YOUR LIBRARY</p><h2>Recent projects</h2></div></div>
+          <div id="project-list" class="project-list"></div>
+        </section>
+      </section>
+
+      <section id="project-view" hidden>
+        <button id="back-button" class="back-button">← Library</button>
+        <div class="project-heading">
+          <div><p class="eyebrow">AUDIOBOOK PROJECT</p><h1 id="project-title"></h1><p id="project-meta" class="muted"></p></div>
+          <button id="delete-project" class="text-button danger">Delete project</button>
+        </div>
+        <div id="job-banner" class="job-banner" hidden aria-live="polite"></div>
+        <div class="workspace-grid">
+          <section class="workspace-main">
+            <div class="section-heading review-heading">
+              <div><p class="eyebrow">STEP 1 · REVIEW</p><h2>Your text</h2><p class="muted">Edit passages and assign each one to a speaker.</p></div>
+              <button id="analyze-button" class="button secondary">Find speakers with AI</button>
+            </div>
+            <div id="passage-list" class="passage-list"></div>
+          </section>
+          <aside class="voice-panel">
+            <p class="eyebrow">STEP 2 · MAKE IT YOURS</p><h2>Speaker voices</h2>
+            <p class="muted">Describe each voice, then create a short preview. Voice creation may incur a provider charge.</p>
+            <div id="speaker-list" class="speaker-list"></div>
+            <button id="generate-button" class="button primary generate-button">Generate audiobook</button>
+            <div id="audio-result" class="audio-result" hidden></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer><span>PageTurn Audio</span><span>Private, local first audiobook creation</span></footer>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

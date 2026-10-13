@@ -1,11 +1,6 @@
 import os
 import base64
 from ocr_model import do_ocr_on_image
-from huggingface_hub import login
-
-# Set token from environment variable
-hf_token = os.getenv("HF_TOKEN")
-login(token=hf_token)
 
 def main():
     # Create input directory if it doesn't exist
@@ -24,6 +19,7 @@ def main():
     for img in images:
         print ('Processing image: ' + names[i])
         do_ocr_on_image(img)
+        ## run tts here?
         i += 1
 
 
